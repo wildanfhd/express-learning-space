@@ -3,14 +3,6 @@
 const fs = require("fs");
 const path = require("path");
 
-const fileReadCallback = (error, data) => {
-  if (error) {
-    console.log("Gagal membaca file");
-    return;
-  }
-  console.log(data);
-};
-
 // Membuat path untuk menentukan nama file yang akan di write
 const writePath = path.resolve(__dirname, "test.txt");
 const asyncWritePath = path.resolve(__dirname, "asyncTest.txt");
