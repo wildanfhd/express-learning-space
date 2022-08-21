@@ -23,5 +23,3 @@ rl.question("Masukkan nama anda : ", (nama) => {
     });
   });
 });
-
-module.exports = rl;
