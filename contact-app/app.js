@@ -24,34 +24,36 @@ if (!fs.existsSync(dataPath)) {
   fs.writeFileSync(dataPath, "[]", "utf-8");
 }
 
-const pertanyaan1 = () => {
+// * Membuat function untuk membuat pertanyaan
+const buatPertanyaan = (pertanyaan) => {
   return new Promise((resolve, reject) => {
-    rl.question("Masukkan nama anda : ", (nama) => {
-      resolve(nama);
+    rl.question(pertanyaan, (callback) => {
+      resolve(callback);
     });
   });
 };
 
-const pertanyaan2 = () => {
-  return new Promise((resolve, reject) => {
-    rl.question("Masukkan email anda : ", (email) => {
-      resolve(email);
-    });
-  });
-};
+// const pertanyaan2 = () => {
+//   return new Promise((resolve, reject) => {
+//     rl.question("Masukkan email anda : ", (email) => {
+//       resolve(email);
+//     });
+//   });
+// };
 
-const pertanyaan3 = () => {
-  return new Promise((resolve, reject) => {
-    rl.question("Masukkan No HP anda : ", (noHP) => {
-      resolve(noHP);
-    });
-  });
-};
+// const pertanyaan3 = () => {
+//   return new Promise((resolve, reject) => {
+//     rl.question("Masukkan No HP anda : ", (noHP) => {
+//       resolve(noHP);
+//     });
+//   });
+// };
 
+// * Main
 const main = async () => {
-  const nama = await pertanyaan1();
-  const email = await pertanyaan2();
-  const nomorHP = await pertanyaan3();
+  const nama = await buatPertanyaan("Masukkan nama anda : ");
+  const email = await buatPertanyaan("Masukkan email anda : ");
+  const nomorHP = await buatPertanyaan("Masukkan No HP anda : ");
 
   // * Membuat object game yang memiliki properti nama dan noHp yang diambil dari input
   const contact = { nama, email, nomorHP };
@@ -65,7 +67,7 @@ const main = async () => {
   // * Memasukkan object contact yang berisi properti nama dan noHP yang didapat dari input user ke dalam
   contacts.push(contact);
 
-  // * Mengirimkan contacts yang berisi data object contact dan mengubahnya menjadi string
+  // * Mengirimkan contacts yang berisi data object contact dan mengubahnya menjadi string dan menuliskannya ke dalam file tujuan yaitu dataPath
   fs.writeFileSync(dataPath, JSON.stringify(contacts));
 
   console.log("Data telah dimasukkan, terima kasih");
