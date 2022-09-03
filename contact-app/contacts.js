@@ -47,7 +47,7 @@ const simpanContact = (nama, email, nomorHP) => {
   contacts.push(contact);
 
   // * Mengirimkan contacts yang berisi data object contact dan mengubahnya menjadi string dan menuliskannya ke dalam file tujuan yaitu dataPath
-  fs.writeFileSync(dataPath, JSON.stringify(contacts));
+  fs.writeFileSync(dataPath, JSON.stringify(contacts, null, 4));
 
   console.log("Data telah dimasukkan, terima kasih");
 
