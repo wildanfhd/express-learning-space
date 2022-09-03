@@ -1,5 +1,6 @@
 // Import module yargs
 const yargs = require("yargs");
+const { simpanContact } = require("./contacts");
 
 // Membuat command
 yargs.command({
@@ -23,14 +24,9 @@ yargs.command({
     },
   },
   handler(argv) { 
-    // Membuat object untuk menampung data yang diinput lewat command line
-    const contact = {
-      nama: argv.nama,
-      email: argv.email,
-      noHP: argv.noHP
-    };
-    console.log(contact);
-  }
-})
+    // * Memanggil function simpanContact dari contacts.js
+    simpanContact(argv.nama, argv.email, argv.noHP);
+  },
+});
 
 yargs.parse();
