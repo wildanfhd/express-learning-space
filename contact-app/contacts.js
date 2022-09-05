@@ -1,12 +1,4 @@
 const fs = require("fs");
-const readLine = require("readline");
-// ! const path = require("path");
-
-// * Membuat interface yaitu input untuk mengambil input dari user, dan output untuk menampilkan input dari user
-const rl = readLine.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
 
 // ! Membuat variable untuk menampung path file
 // ! const contactsPath = path.resolve(__dirname, "data/contacts.json");
@@ -24,14 +16,6 @@ if (!fs.existsSync(dataPath)) {
   fs.writeFileSync(dataPath, "[]", "utf-8");
 }
 
-// * Membuat function untuk membuat pertanyaan
-const buatPertanyaan = (pertanyaan) => {
-  return new Promise((resolve, reject) => {
-    rl.question(pertanyaan, (callback) => {
-      resolve(callback);
-    });
-  });
-};
 
 const simpanContact = (nama, email, nomorHP) => {
   // * Membuat object game yang memiliki properti nama dan noHp yang diambil dari input
@@ -58,8 +42,6 @@ const simpanContact = (nama, email, nomorHP) => {
   fs.writeFileSync(dataPath, JSON.stringify(contacts, null, 4));
 
   console.log("Data telah dimasukkan, terima kasih");
-
-  rl.close();
 };
 
-module.exports = { buatPertanyaan, simpanContact };
+module.exports = { simpanContact };
