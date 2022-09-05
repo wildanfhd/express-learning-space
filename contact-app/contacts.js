@@ -43,6 +43,14 @@ const simpanContact = (nama, email, nomorHP) => {
   // * Mengubah string pada file contacts.json menjadi JSON
   const contacts = JSON.parse(filesBuffer);
 
+  // * Cek duplikat
+  const duplikat = contacts.find((contact) => contact.nama === nama);
+
+  if(duplikat) {
+    console.log("Contact sudah terdaftar, gunakan nama lain");    
+    return false;
+  } 
+
   // * Memasukkan object contact yang berisi properti nama dan noHP yang didapat dari input user ke dalam
   contacts.push(contact);
 
